@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <div class="main-content">
+            <header class="admin-header">
+                <h1>
+                    <div class="logo">⚙️</div>
+                    <span>Admin Panel</span>
+                </h1>
+                <div class="header-controls">
+                    <div class="search-container">
+                        <input type="text" id="admin-search" placeholder="Ticket ara...">
+                        <button id="search-btn">🔍</button>
+                    </div>
+                    <div class="notification-area">
+                        <span id="notification-count" class="notification-badge">0</span>
+                        <button id="refresh-btn" class="refresh-btn">Yenile</button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- İstatistik Kartları -->
+            <div class="stats-cards">
+                <div class="stat-card approved">
+                    <h3>Onaylanmış</h3>
+                    <span id="approved-count" class="stat-number">0</span>
+                </div>
+                <div class="stat-card pending">
+                    <h3>Bekleyen</h3>
+                    <span id="pending-count" class="stat-number">0</span>
+                </div>
+                <div class="stat-card rejected">
+                    <h3>Reddedilen</h3>
+                    <span id="rejected-count" class="stat-number">0</span>
+                </div>
+                <div class="stat-card total">
+                    <h3>Toplam</h3>
+                    <span id="total-count" class="stat-number">0</span>
+                </div>
+            </div>
+
+            <!-- Filtreleme -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="status-filter">Durum:</label>
+                    <select id="status-filter">
+                        <option value="">Tümü</option>
+                        <option value="approved">Onaylanmış</option>
+                        <option value="pending">Bekleyen</option>
+                        <option value="rejected">Reddedilen</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="category-filter">Kategori:</label>
+                    <select id="category-filter">
+                        <option value="">Tümü</option>
+                        <option value="daily">Günlük</option>
+                        <option value="siradan">Sıradan</option>
+                        <option value="naturaly">Doğal olaylar</option>
+                        <option value="kaza">Kaza</option>
+                        <option value="acil">Acil</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="user-filter">Kullanıcı:</label>
+                    <input type="text" id="user-filter" placeholder="Kullanıcı adı ara...">
+                </div>
+                <button id="clear-filters" class="clear-filters-btn">Filtreleri Temizle</button>
+            </div>
+            
+            <div class="ticket-section">
+                <h2>Ticket Listesi</h2>
+                <div class="ticket-list" id="ticket-list"></div>
+            </div>
+        </div>
+        
+        <aside class="notification-sidebar">
+            <div class="notification-panel" id="notification-panel">
+                <h3>Bildirimler</h3>
+                <div id="notification-list"></div>
+            </div>
+        </aside>
+    </div>
+
+    
+
+
+
+
+
+
+    
+    
+
+    <script src="admin.js"></script>
+</body>
+</html>

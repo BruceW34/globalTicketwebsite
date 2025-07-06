@@ -1,0 +1,964 @@
+/** Temel Sıfırlama ve Genel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #181818;
+    min-height: 100vh;
+    color: #f5c242;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: linear-gradient(90deg, #181818 60%, #f5c242 100%);
+    color: #f5c242;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(245, 194, 66, 0.15);
+  }
+
+  .navbar-center {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fffbe6;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+    margin: 0;
+    font-family: 'Georgia', serif;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .site-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f5c242;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24255;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+    animation: rotate 4s linear infinite;
+    filter: drop-shadow(0 2px 8px #000);
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .site-title span {
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24255;
+  }
+  
+  .user-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fffbe6;
+  }
+  
+  .user-name span {
+    font-weight: 700;
+    margin-left: 5px;
+    color: #ffe;
+  }
+
+  /* Auth Buttons */
+  .auth-buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .auth-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px #f5c24233;
+  }
+
+  #register-btn {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    box-shadow: 0 4px 15px #f5c24255;
+  }
+
+  #login-btn {
+    background: #222;
+    color: #f5c242;
+    border: 2px solid #f5c242;
+  }
+
+  .auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px #f5c24255;
+  }
+
+  .admin-btn {
+    padding: 10px 20px;
+    border: 2px solid #f5c242;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: transparent;
+    color: #f5c242;
+  }
+
+  .admin-btn:hover {
+    background: #f5c242;
+    color: #181818;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px #f5c24255;
+  }
+
+  .sample-btn {
+    padding: 8px 16px;
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 11px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: transparent;
+    color: #4CAF50;
+  }
+
+  .sample-btn:hover {
+    background: #4CAF50;
+    color: #181818;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px #4CAF5055;
+  }
+
+  /* User Info */
+  .user-info {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #222;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px #f5c24233;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f5c242;
+    border: 1px solid #f5c242;
+  }
+
+  .user-info .greeting {
+    color: #f5c242;
+    font-weight: 600;
+  }
+
+  .user-info .username {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fffbe6;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-overlay.active {
+    display: flex !important;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Modal */
+  .modal {
+    background: #222;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 60px #f5c24233;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: none;
+    position: relative;
+    z-index: 1001;
+    border: 2px solid #f5c242;
+  }
+
+  .modal.active {
+    transform: scale(1);
+    opacity: 1;
+    display: block;
+  }
+
+  .modal-content {
+    padding: 40px;
+    position: relative;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #f5c242;
+    transition: color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    color: #fffbe6;
+  }
+
+  .modal h2 {
+    text-align: center;
+    color: #f5c242;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #f5c242;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px #000;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f5c242;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #181818;
+    color: #f5c242;
+    box-shadow: 0 2px 12px #f5c24233;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #fffbe6;
+    box-shadow: 0 0 0 2px #f5c24299;
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f5c242;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #181818;
+    color: #f5c242;
+    box-shadow: 0 2px 12px #f5c24233;
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+  }
+
+  .form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f5c242;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #181818;
+    color: #f5c242;
+    box-shadow: 0 2px 12px #f5c24233;
+    cursor: pointer;
+  }
+
+  .form-group select option {
+    background: #181818;
+    color: #f5c242;
+  }
+
+  .ticket-modal {
+    max-width: 600px;
+  }
+
+  .admin-modal {
+    max-width: 400px;
+  }
+
+  .ticket-detail-modal {
+    max-width: 800px;
+    width: 90%;
+  }
+
+  .ticket-detail-content {
+    padding: 20px 0;
+  }
+
+  .ticket-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f5c24233;
+  }
+
+  .ticket-detail-title {
+    font-size: 1.8rem;
+    color: #f5c242;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+  }
+
+  .ticket-detail-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .ticket-detail-meta span {
+    background: #f5c242;
+    color: #181818;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #0002;
+  }
+
+  .ticket-detail-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #fffbe6;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #181818;
+    border-radius: 12px;
+    border-left: 4px solid #f5c242;
+  }
+
+  .ticket-detail-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #222;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .ticket-detail-user .user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #f5c242;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #181818;
+    font-size: 1.2rem;
+  }
+
+  .ticket-detail-user .user-info {
+    flex: 1;
+  }
+
+  .ticket-detail-user .username {
+    font-weight: 600;
+    color: #f5c242;
+    font-size: 1.1rem;
+  }
+
+  .ticket-detail-user .date {
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 2px;
+  }
+
+  .modal button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px #f5c24233;
+  }
+
+  .modal button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #f5c24255;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Arama Çubuğu */
+  .search-bar {
+    padding: 24px 40px 16px 40px;
+    background: #222;
+    border-bottom: 2px solid #f5c242;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .search-input-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 220px;
+    max-width: 600px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 12px 0 0 12px;
+    border: 2px solid #f5c242;
+    border-right: none;
+    font-size: 17px;
+    background: #181818;
+    color: #f5c242;
+    box-shadow: 0 2px 12px #f5c24233;
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .search-btn {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: 2px solid #f5c242;
+    border-left: none;
+    padding: 12px 15px;
+    border-radius: 0 12px 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    transform: translateY(-1px);
+  }
+  
+  .search-bar input:focus {
+    outline: none;
+    border-color: #fffbe6;
+    box-shadow: 0 0 0 2px #f5c24299;
+  }
+
+  /* Yeni Ticket Butonu */
+  .new-ticket-btn {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px #f5c24233;
+    white-space: nowrap;
+    min-width: 140px;
+  }
+
+  .new-ticket-btn:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    color: #181818;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px #f5c24255;
+  }
+
+  .new-ticket-btn a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Ana içerik alanı */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+    gap: 20px;
+    background: transparent;
+  }
+  
+  /* Sol sidebar: Anlık dönen bilgiler */
+  .sidebar-left {
+    width: 15%;
+    min-width: 140px;
+    max-width: 200px;
+    background: #222;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px #f5c24222;
+    color: #f5c242;
+  }
+  
+  .sidebar-left h3 {
+    margin-bottom: 15px;
+    color: #f5c242;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+  }
+  
+  .filters {
+    margin-bottom: 15px;
+  }
+  
+  .filters label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .filter-group {
+    margin-bottom: 15px;
+  }
+
+  .filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f5c242;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 4px #000;
+  }
+
+  .filters select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #f5c242;
+    background: #181818;
+    color: #f5c242;
+    font-size: 0.9rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .filters select:focus {
+    outline: none;
+    border-color: #fffbe6;
+    box-shadow: 0 0 0 2px #f5c24299;
+  }
+
+  .clear-filters-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .clear-filters-btn:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    transform: translateY(-1px);
+  }
+  
+  .filters select:focus {
+    outline: none;
+    border-color: #00c6ff;
+    box-shadow: 0 0 0 2px rgba(0, 198, 255, 0.2);
+  }
+  
+  .ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Ortadaki ana ticket alanı */
+  .main-tickets {
+    width: 70%;
+    min-width: 400px;
+    max-width: 1200px;
+    background: #181818;
+    padding: 24px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px #f5c24222;
+    margin: 0 auto;
+    color: #fffbe6;
+  }
+  
+  .main-tickets h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Ticket kartı */
+  .ticket {
+    background: #fff;
+    border-left: 5px solid #00c6ff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .ticket:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 198, 255, 0.3);
+    z-index: 2;
+  }
+  
+  .ticket h4 {
+    margin-bottom: 8px;
+    color: #444;
+  }
+  
+  .ticket p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Sağ sidebar: Filtreler */
+  .sidebar-right {
+    width: 15%;
+    min-width: 140px;
+    max-width: 200px;
+    background: #222;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px #f5c24222;
+    color: #f5c242;
+  }
+  
+  .sidebar-right h3 {
+    margin-bottom: 10px;
+    color: #f39c12;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+  }
+  
+  .sidebar-right p {
+    color: #777;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  
+  /* Responsive düzen */
+  @media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        padding: 15px 5vw;
+    }
+    .sidebar-left,
+    .sidebar-right,
+    .main-tickets {
+        width: 100% !important;
+        min-width: 0;
+        max-width: 100%;
+        margin-bottom: 18px;
+    }
+    .tickets-grid {
+        grid-template-columns: 1fr;
+    }
+    .search-bar {
+        padding: 20px;
+    }
+    .search-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    .search-input-group {
+        width: 100% !important;
+        min-width: 120px;
+        max-width: 100%;
+    }
+    .new-ticket-btn {
+        align-self: flex-start;
+        min-width: 120px;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .navbar-center {
+        margin: 0;
+    }
+    .tagline {
+        font-size: 1rem;
+    }
+    .site-title {
+        justify-content: center;
+    }
+    .logo {
+        font-size: 1.8rem;
+    }
+    .ticket-detail-modal {
+        width: 95%;
+        max-width: 95%;
+    }
+    .ticket-detail-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .ticket-detail-meta {
+        justify-content: center;
+    }
+  }
+  
+  /* Tickets Grid */
+  .tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* JavaScript'te kullanılan tickets sınıfı */
+  .tickets {
+    background: #222;
+    border-left: 5px solid #f5c242;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #f5c24233;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    word-break: break-word;
+    color: #fffbe6;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tickets:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px #f5c24255;
+  }
+  
+  .tickets:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px #f5c24255;
+  }
+  
+  .tickets h4 {
+    margin-bottom: 8px;
+    color: #f5c242;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0 1px 4px #000;
+  }
+  
+  .tickets p {
+    color: #fffbe6;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .tickets .user {
+    color: #f5c242;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 4px #000;
+  }
+
+  .tickets .ticket-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #f5c24233;
+  }
+
+  .tickets .ticket-info .date {
+    color: #f5c242;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .tickets .ticket-info .category {
+    background: #f5c242;
+    color: #181818;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    box-shadow: 0 1px 4px #0002;
+  }
+  
+  /* Ticket meta bilgileri */
+  .ticket-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+  }
+  
+  .ticket-meta .category {
+    background: #00c6ff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .ticket-meta .date {
+    color: #888;
+    font-size: 0.85rem;
+  }
+  
+  /* Sol sidebar'daki küçük ticket'lar */
+  .recent-ticket {
+    background: #181818;
+    border-left: 3px solid #f5c242;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #f5c242;
+    box-shadow: 0 2px 8px #f5c24222;
+  }
+  
+  .recent-ticket:hover {
+    background: #33383b;  /* #4f97ca;*/
+    transform: translateX(5px);
+  }
+  
+  .recent-ticket h5 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #f5c242;
+    font-weight: 600;
+    text-shadow: 0 1px 4px #000;
+  }
+  
+  .recent-ticket p {
+    font-size: 0.8rem;
+    color: #fffbe6;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  
+  .category-small {
+    background: #f5c242;
+    color: #181818;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    display: inline-block;
+    word-break: break-word;
+    max-width: 100%;
+    font-weight: bold;
+    box-shadow: 0 1px 4px #0002;
+  }
+
+  .small-user {
+    color: #f5c242;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 4px;
+    text-shadow: 0 1px 4px #000;
+  }

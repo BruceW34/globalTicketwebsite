@@ -1,0 +1,559 @@
+/* Reset ve temel ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #181818;
+    min-height: 100vh;
+    color: #f5c242;
+    padding: 20px;
+}
+
+/* Admin Layout */
+.admin-layout {
+    display: flex;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    background: #222;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px #f5c24222;
+}
+
+.notification-sidebar {
+    flex: 0 0 300px;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px #f5c24222;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+/* Admin Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f5c24233;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container input {
+    padding: 10px 15px;
+    border: 2px solid #f5c242;
+    border-radius: 8px;
+    background: #181818;
+    color: #f5c242;
+    font-size: 14px;
+    min-width: 250px;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #fffbe6;
+    box-shadow: 0 0 0 2px #f5c24299;
+}
+
+.search-container button {
+    background: #f5c242;
+    color: #181818;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-container button:hover {
+    background: #fffbe6;
+    transform: translateY(-1px);
+}
+
+.admin-header h1 {
+    margin: 0;
+    color: #f5c242;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-header .logo {
+    font-size: 2.8rem;
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px #000);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.admin-header h1 span {
+    text-shadow: 0 2px 8px #000, 0 0 10px #f5c24233;
+}
+
+.notification-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notification-badge {
+    background: #ff5858;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    min-width: 25px;
+    text-align: center;
+}
+
+.refresh-btn {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    transform: translateY(-2px);
+}
+
+/* İstatistik Kartları */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #f5c24233;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #f5c24233;
+}
+
+.stat-card h3 {
+    color: #f5c242;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fffbe6;
+    text-shadow: 0 2px 8px #000;
+}
+
+.stat-card.approved {
+    border-color: #4CAF50;
+}
+
+.stat-card.approved .stat-number {
+    color: #4CAF50;
+}
+
+.stat-card.pending {
+    border-color: #FF9800;
+}
+
+.stat-card.pending .stat-number {
+    color: #FF9800;
+}
+
+.stat-card.rejected {
+    border-color: #f44336;
+}
+
+.stat-card.rejected .stat-number {
+    color: #f44336;
+}
+
+.stat-card.total {
+    border-color: #f5c242;
+}
+
+.stat-card.total .stat-number {
+    color: #f5c242;
+}
+
+/* Filtreleme Bölümü */
+.filter-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #181818;
+    border-radius: 12px;
+    border: 2px solid #f5c24233;
+    flex-wrap: wrap;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 150px;
+}
+
+.filter-group label {
+    color: #f5c242;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 10px;
+    border: 2px solid #f5c242;
+    border-radius: 8px;
+    background: #222;
+    color: #f5c242;
+    font-size: 14px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #fffbe6;
+    box-shadow: 0 0 0 2px #f5c24299;
+}
+
+.clear-filters-btn {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.clear-filters-btn:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    transform: translateY(-2px);
+}
+
+/* Notification Panel */
+.notification-panel {
+    background: #181818;
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #f5c24233;
+}
+
+.notification-panel h3 {
+    color: #f5c242;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+#notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    background: #222;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #f5c242;
+    color: #fffbe6;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.notification-item:hover {
+    background: #2a2516;
+    transform: translateX(5px);
+}
+
+.notification-item.read {
+    opacity: 0.6;
+    border-left-color: #666;
+}
+
+/* Ticket Section */
+.ticket-section h2 {
+    color: #f5c242;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-shadow: 0 1px 4px #000;
+}
+
+/* Ticket Listesi */
+.ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Her bir ticket öğesi */
+.ticket-item {
+    background: #181818;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px #f5c24222;
+    border-left: 5px solid #f5c242;
+    transition: box-shadow 0.3s ease;
+    color: #fffbe6;
+    position: relative;
+}
+
+.ticket-item:hover {
+    box-shadow: 0 8px 25px #f5c24255;
+}
+
+.ticket-item h3 {
+    margin-bottom: 10px;
+    color: #f5c242;
+    text-shadow: 0 1px 4px #000;
+}
+
+/* p etiketi düzenlemesi */
+.ticket-item p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #fffbe6;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.02em;
+    text-align: justify;
+    text-indent: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.ticket-item p strong {
+    color: #f5c242;
+}
+
+/* Butonlar Genel */
+.ticket-item button {
+    background: linear-gradient(90deg, #f5c242 0%, #181818 100%);
+    color: #181818;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px #f5c24233;
+}
+
+/* Hover efekti */
+.ticket-item button:hover {
+    background: linear-gradient(90deg, #fffbe6 0%, #f5c242 100%);
+    color: #181818;
+}
+
+/* Reddet Butonu */
+.ticket-item button.reject-btn {
+    background: linear-gradient(90deg, #ff5858 0%, #f5c242 100%);
+    color: #fffbe6;
+}
+
+.ticket-item button.reject-btn:hover {
+    background: linear-gradient(90deg, #f5c242 0%, #ff5858 100%);
+    color: #fffbe6;
+}
+
+/* Silme Butonu */
+.ticket-item button.delete-btn {
+    position: absolute;
+    top: 28px;
+    right: 10px;
+    background: linear-gradient(90deg, #ff0000  0%, #db0d0d 100%);
+    color: #fffbe6;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px #f5c24233;
+    transition: all 0.3s ease;
+}
+
+.ticket-item button.delete-btn:hover {
+    background: linear-gradient(90deg, #292b29  0%, #5b706e 100%);
+    color: #fffbe6;
+    transform: scale(1.1);
+    box-shadow: 0 5px  12px #f5c24255;
+}
+
+/* Durumlara göre farklı stiller */
+
+/* Onaylanmış */
+.ticket-item.approved {
+    border-left-color: #a8ff78;
+    background: #232b1b;
+}
+
+.ticket-item.approved h3,
+.ticket-item.approved p {
+    color: #f5c242;
+}
+
+/* Beklemede (pending) */
+.ticket-item.pending {
+    border-left-color: #ffd200;
+    background: #2a2516;
+    color: #ffb300;
+}
+
+/* Reddedilmiş (rejected) */
+.ticket-item.rejected {
+    border-left-color: #ff5858;
+    background: #2a1818;
+    color: #f5c242;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .admin-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .notification-sidebar {
+        flex: none;
+        width: 100%;
+        position: static;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .admin-header h1 {
+        justify-content: center;
+    }
+    
+    .admin-header .logo {
+        font-size: 2.2rem;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-container input {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        min-width: 0;
+    }
+    
+    .admin-header h1 {
+        font-size: 2rem;
+    }
+    
+    .ticket-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Boş mesaj */
+.no-tickets-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #f5c242;
+    font-weight: 600;
+    margin-top: 100px;       /* Sayfanın ortasına yakın */
+    font-style: italic;
+    user-select: none;       /* Yazının seçilmesini engelle */
+    opacity: 0.7;            /* Hafif şeffaflık */
+}

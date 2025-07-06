@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruce Problem</title>
+    <link rel="stylesheet" href="anaSayfa.css">
+</head>
+<body>
+    <!--Navbar-->
+
+    <header class="navbar">
+        <div class="site-title">
+            <div class="logo">🔧</div>
+            <span>Bruce problems</span>
+        </div>
+        <div class="navbar-center">
+            <h2 class="tagline">Bir problem hiç bu kadar şikayetin en güzel hali</h2>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info" id="user-info">
+                <div class="user-name">Merhaba,<span id="user">Kullanıcı</span></div>
+            </div>
+            <div class="auth-buttons" id="auth-buttons">
+                <button id="register-btn" class="auth-btn">Kayıt Ol</button>
+                <button id="login-btn" class="auth-btn">Giriş Yap</button>
+            </div>
+            <button id="admin-btn" class="admin-btn">Admin</button>
+            <button id="add-sample-btn" class="sample-btn" style="display: none;">Örnek Veriler Ekle</button>
+        </div>
+    </header>
+    <!--Arama search henüz hazır değil-->
+
+        <div class="search-bar">
+        <div class="search-container">
+            <button class="new-ticket-btn" id="new-ticket-btn">
+                Bir sorun gir
+            </button>
+            <div class="search-input-group">
+                <input type="text" placeholder="Sorun ara..." id="ticket-search">
+                <button class="search-btn" id="search-btn">
+                    <span>🔍</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <!-- Login Modal -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Giriş Yap</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Kullanıcı Adı:</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Şifre:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit">Giriş Yap</button>
+                </form>
+            </div>
+        </div>
+        <!-- Register Modal -->
+        <div id="register-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Kayıt Ol</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">İsim:</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-username">Kullanıcı Adı:</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">E-posta:</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Şifre:</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit">Kayıt Ol</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ticket Creation Modal -->
+        <div id="ticket-modal" class="modal ticket-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Yeni Şikayet Oluştur</h2>
+                <form id="ticket-form">
+                    <div class="form-group">
+                        <label for="ticket-title">Şikayet Başlığı:</label>
+                        <input type="text" id="ticket-title" required placeholder="Şikayet başlığını girin...">
+                    </div>
+                    <div class="form-group">
+                        <label for="ticket-description">Şikayet Açıklaması:</label>
+                        <textarea id="ticket-description" required placeholder="Şikayetinizi detaylıca açıklayın..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticket-priority">Şikayet Önemi:</label>
+                        <select id="ticket-priority" required>
+                            <option value="">Seçiniz</option>
+                            <option value="daily">Günlük</option>
+                            <option value="siradan">Sıradan</option>
+                            <option value="naturaly">Doğal olaylar</option>
+                            <option value="kaza">Kaza</option>
+                            <option value="acil">Acil</option>
+                        </select>
+                    </div>
+                    <button type="submit">Şikayet Oluştur</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Login Modal -->
+        <div id="admin-modal" class="modal admin-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Admin Girişi</h2>
+                <form id="admin-form">
+                    <div class="form-group">
+                        <label for="admin-password">Admin Şifresi:</label>
+                        <input type="password" id="admin-password" required placeholder="1234">
+                    </div>
+                    <button type="submit">Giriş Yap</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ticket Detail Modal -->
+        <div id="ticket-detail-modal" class="modal ticket-detail-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div id="ticket-detail-content">
+                    <!-- Ticket detayları buraya gelecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ticket zone-->
+    <main class="content">
+        <aside class="sidebar-left">
+            <h3>Son sorunlar</h3>
+            
+            <div class="ticket-list" id="ticket-list">
+                //Ticket zone
+            </div>
+        </aside>
+
+        <!-- Ana ticket alanı -->
+        <div class="main-tickets" id="main-tickets">
+            <div class="tickets-grid" id="tickets-grid">
+                <!-- Ticket'lar buraya gelecek -->
+            </div>
+        </div>
+
+        <!--sağ taraf-->
+        <aside class="sidebar-right">
+            <h3>Filtreleme</h3>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category-filter">Kategori:</label>
+                    <select id="category-filter">
+                        <option value="">Tümü</option>
+                        <option value="daily">Günlük</option>
+                        <option value="siradan">Sıradan</option>
+                        <option value="naturaly">Doğal olaylar</option>
+                        <option value="kaza">Kaza</option>
+                        <option value="acil">Acil</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="time-filter">Zaman:</label>
+                    <select id="time-filter">
+                        <option value="">Tümü</option>
+                        <option value="today">Bugün</option>
+                        <option value="week">Bu Hafta</option>
+                        <option value="month">Bu Ay</option>
+                        <option value="older">Daha Eski</option>
+                    </select>
+                </div>
+                <button class="clear-filters-btn" id="clear-filters">Filtreleri Temizle</button>
+            </div>
+        </aside>
+    </main>
+
+    
+
+    <script src="anaSayfa.js"></script>
+    
+</body>
+</html>

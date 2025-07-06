@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+     <!-- Header -->
+      <header class="header">
+        <h1>Şikayetin en güzel hali</h1>
+        <div class="auth-buttons">
+            <button id="register-btn" class="auth-btn">kayıt Ol</button>
+            <button id="login-btn" class="auth-btn">Giriş Yap</button>
+        </div>
+      </header>
+
+      <!-- Modal Overlay-->
+       <div id="modal-overlay" class="modal-overlay">
+        <!-- Login Modal-->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Giriş Yap</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Kullanıcı Adı:</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Şifre:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Giriş Yap</button>
+            </form>
+            </div>
+        </div>
+        <!-- Register Modal-->
+         <div id="register-modal" class="modal">
+            <div class="modal-content"><span class="close-btn">&times;</span> 
+            <h2>Kayıt Ol</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">İsim:</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-username">Kullanıcı Adı:</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">E-posta:</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Şifre:</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit">Kayıt Ol</button>
+            </form>
+            </div>
+         </div>
+        </div>
+
+        <div class="content-layout">
+            <aside class="left-bar">
+                <div class="left-bar-class">
+                    <h3>Tüm şikayetler burada</h3>
+                   <button class="go-button"><a href="anaSayfa/anaSayfa.html" target="_blank" rel="noopener noreferrer">Git</a></button>
+                </div>
+            </aside>
+
+            <div class="main-form-container">
+                <h1>Ticket Oluştur</h1>
+                <form id="ticket-form">
+                    <div class="form-group">
+                        <label for="ticket-title">Şikayet Başlığı:</label>
+                        <input type="text" id="ticket-title" required placeholder="Şikayet başlığını girin...">
+                    </div>
+                    <div class="form-group">
+                        <label for="ticket-description">Şikayet Açıklaması:</label>
+                        <textarea id="ticket-description" required placeholder="Şikayetinizi detaylıca açıklayın..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Şikayet Önemi:</label>
+                        <select id="priority" required>
+                            <option value="">Seçiniz</option>
+                            <option value="daily">Günlük</option>
+                            <option value="siradan">Sıradan</option>
+                            <option value="naturaly">Doğal olaylar</option>
+                            <option value="kaza">Kaza</option>
+                            <option value="acil">Acil</option>
+                        </select>
+                    </div>
+                    <button type="submit">Şikayet Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
